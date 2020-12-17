@@ -9,7 +9,6 @@
 
 
 
-
 <div class="page-wrapper">
     <!-- Page-header start -->
     <div class="page-header">
@@ -66,16 +65,14 @@
                 </div>
                 <div class="card-block">
                     <h4 class="sub-title">Basic Inputs</h4>
-                <form action="{{ route('tickets.update',$ticket->id) }}" method="POST">
+                <form action="{{ route('ticket-update',$ticket->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Start City</label>
                             <div class="col-sm-10">
                                 <select name="start_city" class="js-example-basic-multiple form-control">
-                                    @foreach($cities as $data)
-                                        <option value="{{$data->id}}">{{$data->name}}</option>
-                                    @endforeach
+                                    <option value="{{ $ticket->id }}">{{ $ticket->startcity->name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -84,9 +81,7 @@
                             <label class="col-sm-2 col-form-label">End City</label>
                             <div class="col-sm-10">
                                 <select name="end_city" class="js-example-basic-multiple form-control">
-                                    @foreach($cities as $data)
-                                        <option value="{{$data->id}}">{{$data->name}}</option>
-                                    @endforeach
+                                 <option value="{{ $ticket->id }}">{{ $ticket->endcity->name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -95,9 +90,7 @@
                             <label class="col-sm-2 col-form-label">Airline</label>
                             <div class="col-sm-10">
                                 <select name="airline_id" class="js-example-basic-multiple form-control">
-                                    @foreach($airlines as $data)
-                                        <option value="{{$data->id}}">{{$data->name}}</option>
-                                    @endforeach
+                                   <option value="{{ $ticket->id }}">{{ $ticket->airline->name  }}</option>
                                 </select>
                             </div>
                         </div>
@@ -105,13 +98,13 @@
                             <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Distination Time</label>
                             <div class="col-sm-10">
-                                <input type="datetime-local" name="destination_time" class="form-control">
+                                <input value="{{ $ticket->destination_time }}" type="datetime-local" name="destination_time" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Arrival Time</label>
                             <div class="col-sm-10">
-                                <input type="datetime-local" name="arrival_time" class="form-control">
+                                <input type="datetime-local" value="{{ $ticket->arrival_time }}" name="arrival_time" class="form-control">
                             </div>
                         </div>
                         <div x-data="{loop:3}">
@@ -123,18 +116,21 @@
                                                 <div class="col-sm-11">
                                                     <div class="row">
                                                         <div class="col-sm-3">
-                                                            <input type="number" name="ticket_price[]" class="form-control" placeholder="Price">
+                                                            
+                                                                <input type="number" name="ticket_price[]" class="form-control" placeholder="Price">
+                                                            
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <select name="ticket_level[]" id="" class="form-control">
-                                                                <option value="">Select Level</option>
-                                                                <option value="1">Level 1</option>
-                                                                <option value="2">Level 2</option>
-                                                                <option value="4">Level 3</option>
+                                                                  @foreach ($ticket_price as $data)
+                                                                    <option value="{{ $data->id }}" {{ $data->id==$ticket->ticket_id ? 'selected' : '' }}>{{ $data->level }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                         <div class="col-sm-3">
-                                                            <input type="number" name="ticket_amount[]" class="form-control" placeholder="Amount">
+                                                                @foreach ($ticket_price as $data)
+                                                                <input type="number" value="{{ $data->amount }}" name="ticket_amount[]" class="form-control">
+                                                              @endforeach
                                                         </div>
 
                                                         <div class="col-sm-3">
@@ -156,7 +152,7 @@
                             </template>
                         </div>
                         <input type="submit" value="Update" class="btn btn-primary" style="float: right">
-                         <a href="{{ route('ticket-show') }}" class="btn btn-warning">Details</a>
+                         {{-- <a href="{{ route('ticket-show') }}" class="btn btn-warning">Details</a> --}}
 
                     </form>
                 </div>

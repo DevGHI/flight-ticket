@@ -12,7 +12,7 @@
             <h5>Ticket Details</h5>
             <div style="float: right">
                 {{-- <button class="btn btn-info btn-round" data-toggle="modal" data-target="#create_modalBox">Create</button> --}}
-                  <a class="btn btn-primary btn-round" href="{{ route('tickets.create')}}">Create</a>
+                  <a class="btn btn-primary btn-round" href="">Create</a>
             </div>
         </div>
         <div class="card-block">
@@ -21,36 +21,17 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Start_city</th>
-                             <th>End_city</th>
-                            <th>Airline</th>
-                            <th>Destination_time</th>
-                            <th>Arrival_time</th>
+                            <th>User</th>
+                             <th>Ticket</th>
+                            <th>Unit_Price</th>
+                            <th>Total_Price</th>
+                            <th>QTY</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $no=1;
-                        @endphp
-                        @foreach ($tickets as $data)
-                                <tr>
-                                <td>{{$no++}}</td>
-                                <td>{{ $data->startcity->name }}</td>
-                                <td>{{ $data->endcity->name }}</td>
-                                <td>{{ $data->airline->name }}</td>
-                                <td>{{ $data->destination_time }}</td>
-                                <td>{{ $data->arrival_time }}</td>
-                                <td>
-                                  <form action="{{ route('tickets.destroy',$data->id) }}" method="POST">
-                                   <a class="btn btn-primary btn-round" href="{{ route('ticket-edit',$data->id) }}">Edit</a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-round">Delete</button>
-                                </form>
-                                </td>
-                            </tr>
-                        @endforeach
+
 
                     </tbody>
 

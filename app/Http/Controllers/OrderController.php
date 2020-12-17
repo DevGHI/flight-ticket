@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        return view('admin.order.detail_order');
+    }
     function store(Request $request){
         $request->validate([
             'ticket_id'=>'required|numeric',

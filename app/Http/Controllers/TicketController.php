@@ -121,7 +121,16 @@ class TicketController extends Controller
     public function edit($id)
     {
         $ticket = Ticket::findOrFail($id);
-         return view('admin.ticket.detail',compact('ticket'));
+        $ticket_price=TicketPrice::all();
+        $cities=City::findorFail($id);
+     
+        $airlines=Airline::orderBy('name')->get();
+         return view('admin.ticket.edit-ticket')->with([
+            'ticket'=>$ticket,
+            'cities'=> $cities,
+            'airlines'=> $airlines,
+            'ticket_price'=> $ticket_price
+        ]);
     }
 
     /**
