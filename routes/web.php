@@ -67,6 +67,9 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->prefix('admin')->group(
 
     //Order List
     Route::resource('orders',OrderController::class);
+    Route::post('order/confirm/{confirm}', [OrderController::class,'confirm'])->name('order-confirm');
+    Route::get('order/destroy/{id}', [OrderController::class,'destroy'])->name('order-destroy');
+
 
 });
 

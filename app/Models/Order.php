@@ -10,4 +10,19 @@ class Order extends Model
     use HasFactory;
 
     protected $guarded=[];
+
+    public function user()
+    {
+         return $this->belongsTo('App\Models\User','user_id');
+    }
+     public function startcity()
+    {
+        return $this->hasMany('App\Models\City');
+    }
+
+    public function ticket()
+    {
+        return $this->belongsTo('App\Models\Ticket');
+    }
+
 }

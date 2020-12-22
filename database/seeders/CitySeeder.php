@@ -16,28 +16,16 @@ class CitySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cities')->insert(['name' =>'Yangon']);
-        DB::table('cities')->insert(['name' =>'Mandalay']);
-        DB::table('cities')->insert(['name' =>'Nay Pyi Taw']);
-        DB::table('cities')->insert(['name' =>'Taunggyi']);
-        DB::table('cities')->insert(['name' =>'Myitkyina']);
-        DB::table('cities')->insert(['name' =>'Loikaw']);
-        DB::table('cities')->insert(['name' =>'Pa-an']);
-        DB::table('cities')->insert(['name' =>'Mawlamyine']);
-        DB::table('cities')->insert(['name' =>'Kawthaung']);
-        DB::table('cities')->insert(['name' =>'Dawei']);
-        DB::table('cities')->insert(['name' =>'Myeik']);   
-        DB::table('cities')->insert(['name' =>'Kyaing Tong']);
-        DB::table('cities')->insert(['name' =>'Sittwe']);
-        DB::table('cities')->insert(['name' =>'Thandwe']);     
-        DB::table('cities')->insert(['name' =>'Bhamo']);
-        DB::table('cities')->insert(['name' =>'Pathein']);
-        DB::table('cities')->insert(['name' =>'Nyaung-U']);
-        DB::table('cities')->insert(['name' =>'Kyaukpyu']);
-        DB::table('cities')->insert(['name' =>'Lashio']);
-        DB::table('cities')->insert(['name' =>'Heho']);
-        DB::table('cities')->insert(['name' =>'Tachilek']);          
-        DB::table('cities')->insert(['name' =>'Putao']);  
-          
+        $array =array('Yangon','Mandalay','Nay Pyi Taw','Taunggyi','Myitkyina','Loikaw','Pa-an','Mawlamyine',
+                'Kawthaung','Dawei','Myeik','Kyaing Tong','Sittwe','Thandwe','Bhamo','Pathein','Nyaung-U',
+                'Kyaukpyu','Lashio','Heho', 'Tachilek','Putao');
+
+        $new_array = count($array);
+        for ($i=0; $i < $new_array ; $i++) { 
+            DB::table('cities')->insert([
+                'name'=>$array[$i]
+            ]);
+        }
+
     }
 }

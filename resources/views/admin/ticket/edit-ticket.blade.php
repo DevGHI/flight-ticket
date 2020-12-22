@@ -107,7 +107,7 @@
                                 <input type="datetime-local" value="{{ $ticket->arrival_time }}" name="arrival_time" class="form-control">
                             </div>
                         </div>
-                        <div x-data="{loop:3}">
+                        <div x-data="{loop:1}">
                             <template x-for="(item,index) in loop" :key="item">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Ticket Price</label>
@@ -116,9 +116,12 @@
                                                 <div class="col-sm-11">
                                                     <div class="row">
                                                         <div class="col-sm-3">
-                                                            
-                                                                <input type="number" name="ticket_price[]" class="form-control" placeholder="Price">
-                                                            
+                                                            @foreach ($ticket_price as $data)
+                                                          
+                                                                 <input type="number" name="ticket_price[]" class="form-control" placeholder="Price" value="{{ $data->price }}">
+                                                           
+                                                           
+                                                            @endforeach
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <select name="ticket_level[]" id="" class="form-control">

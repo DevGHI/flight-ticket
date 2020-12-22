@@ -9,13 +9,17 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <h5>Ticket Details</h5>
+            <h5>Order List</h5>
             <div style="float: right">
                 {{-- <button class="btn btn-info btn-round" data-toggle="modal" data-target="#create_modalBox">Create</button> --}}
-                  <a class="btn btn-primary btn-round" href="">Create</a>
             </div>
         </div>
         <div class="card-block">
+            @if (session('message'))
+                 <div class="alert alert-success">
+                    {{ session('message') }}
+                  </div>
+            @endif
             <div class="table-responsive dt-responsive">
                 <table id="dom-jqry" class="table table-striped table-bordered nowrap">
                     <thead>
@@ -28,13 +32,31 @@
                             <th>QTY</th>
                             <th>Status</th>
                             <th>Action</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
-
-
+                      @foreach ($orders as $order)
+                          <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->user->name}}</td>
+                            <td>{{ $order->ticket->startcity->name}}</td>
+                            <td>{{ $order->unit_price }}</td>
+                            <td>{{ $order->total_price }}</td>
+                            <td>{{ $order->qty }}</td>
+                            <td>{{$order->status == false ? 'confirm':'pending' }}</td>
+                            <td>
+                              <form action="order/confirm/{{ $order->id }}" method="POST">
+                                @csrf
+                                 <button type="submit" class="btn btn-success" >
+                                  {{ $order->status == true ? 'confirm':'pending' }}
+                                </button>
+                              </form>
+                              <a  href="{{ route('order-destroy',$order->id) }}" class="btn btn-danger">Delete</a>
+                            </td>
+                          </tr>
+                      @endforeach
                     </tbody>
-
                 </table>
             </div>
         </div>

@@ -17,15 +17,19 @@ class Ticket extends Model
     }
 
 
-       public function startcity()
+    public function startcity()
     {
         return $this->belongsTo('App\Models\City','start_city');
     }
 
-           public function endcity()
+    public function endcity()
     {
         return $this->belongsTo('App\Models\City','end_city');
     }
 
+    public function ticket_price()
+    {
+        return $this->belongsTo('App\Model\TicketPrice','ticket_id');
+    }
 
 }
