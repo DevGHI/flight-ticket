@@ -20,7 +20,7 @@ class AirlineController extends Controller
     public function index()
     {
         $result=Airline::paginate(10);
-       $data=AirlineResource::collection($result);
+        $data=AirlineResource::collection($result);
         return [
             'status'=>"success",
             'message'=>"Successful",

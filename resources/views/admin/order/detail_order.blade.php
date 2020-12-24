@@ -9,51 +9,54 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <h5>Ticket Details</h5>
+            <h5>Order List</h5>
             <div style="float: right">
                 {{-- <button class="btn btn-info btn-round" data-toggle="modal" data-target="#create_modalBox">Create</button> --}}
-                  <a class="btn btn-primary btn-round" href="{{ route('tickets.create')}}">Create</a>
             </div>
         </div>
         <div class="card-block">
+            @if (session('message'))
+                 <div class="alert alert-success">
+                    {{ session('message') }}
+                  </div>
+            @endif
             <div class="table-responsive dt-responsive">
                 <table id="dom-jqry" class="table table-striped table-bordered nowrap">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Start_city</th>
-                             <th>End_city</th>
-                            <th>Airline</th>
-                            <th>Destination_time</th>
-                            <th>Arrival_time</th>
+                            <th>User</th>
+                             <th>Ticket</th>
+                            <th>Unit_Price</th>
+                            <th>Total_Price</th>
+                            <th>QTY</th>
+                            <th>Status</th>
                             <th>Action</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $no=1;
-                        @endphp
-                        @foreach ($tickets as $data)
-                                <tr>
-                                <td>{{$no++}}</td>
-                                <td>{{ $data->startcity->name }}</td>
-                                <td>{{ $data->endcity->name }}</td>
-                                <td>{{ $data->airline->name }}</td>
-                                <td>{{ $data->destination_time }}</td>
-                                <td>{{ $data->arrival_time }}</td>
-                                <td>
-                                  <form action="{{ route('tickets.destroy',$data->id) }}" method="POST">
-                                   <a class="btn btn-primary btn-round" href="{{ route('ticket-edit',$data->id) }}">Edit</a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-round">Delete</button>
-                                </form>
-                                </td>
-                            </tr>
-                        @endforeach
-
+                      @foreach ($orders as $order)
+                          <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->user->name}}</td>
+                            <td>{{ $order->ticket->startcity->name}}</td>
+                            <td>{{ $order->unit_price }}</td>
+                            <td>{{ $order->total_price }}</td>
+                            <td>{{ $order->qty }}</td>
+                            <td>{{$order->status == false ? 'confirm':'pending' }}</td>
+                            <td>
+                              <form action="order/confirm/{{ $order->id }}" method="POST">
+                                @csrf
+                                 <button type="submit" class="btn btn-success" >
+                                  {{ $order->status == true ? 'confirm':'pending' }}
+                                </button>
+                              </form>
+                              <a  href="{{ route('order-destroy',$order->id) }}" class="btn btn-danger">Delete</a>
+                            </td>
+                          </tr>
+                      @endforeach
                     </tbody>
-
                 </table>
             </div>
         </div>

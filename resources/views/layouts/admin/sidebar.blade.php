@@ -44,7 +44,18 @@
                     <span class="pcoded-mtext">Tickets</span>
                 </a>
             </li>
+             <li>
+                <a href="{{ url('admin/orders') }}">
+                    <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
+                    <span class="pcoded-mtext">Orders</span>
+                </a>
+            </li>
+             <li class="@if(Request::is('admin/users')) active @endif">
+                <a href="{{ url('admin/users') }}">
+                    <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
+                    <span class="pcoded-mtext">User Profile</span>
+                </a>
+            </li>
         </ul>
-
     </div>
 </nav>
