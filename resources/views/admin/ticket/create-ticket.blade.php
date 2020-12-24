@@ -156,7 +156,7 @@
                             </template>
                         </div>
                         <input type="submit" value="Save" class="btn btn-primary" style="float: right">
-                         <a href="{{ route('tickets.index') }}" class="btn btn-warning">Detils</a>
+                         {{-- <a href="{{ route('tickets.index') }}" class="btn btn-warning">Detils</a> --}}
                     </form>
                 </div>
             </div>
