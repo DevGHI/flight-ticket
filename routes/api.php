@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('tickets',[\App\Http\Controllers\TicketController::class,'index']);
+Route::get('tickets',[\App\Http\Controllers\TicketController::class,'api_tickets']);
 
 Route::apiResource('cities',\App\Http\Controllers\admin\CityController::class)->middleware('auth:sanctum');
 

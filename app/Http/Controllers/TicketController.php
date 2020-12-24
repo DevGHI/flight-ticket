@@ -32,6 +32,16 @@ class TicketController extends Controller
         return view('admin.ticket.detail',compact('tickets'));
     }
 
+    public function api_tickets()
+    {
+        $tickets=Ticket::all();
+
+       $data=TicketResource::collection($tickets);
+        return [
+            'data'=>$data
+        ];
+    }
+
     /**
      * Show the form for creating a new resource.
      *
