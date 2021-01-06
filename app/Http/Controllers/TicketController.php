@@ -92,12 +92,25 @@ class TicketController extends Controller
         $ticket_durations=$request->get('ticket_duration');
 
         for ($i=0;$i<count($ticket_prices);$i++){
+            $limit=0;
+            if ($i==0){
+                $current_date=date('Y-m-d');
+                $selected_date=Carbon::parse($ticket_durations[$i]);
+                $current_date=Carbon::parse($current_date);
+                $limit=$selected_date->diffInDays($current_date);
+            }else{
+                $selected_date2=Carbon::parse($ticket_durations[$i]);
+                $selected_date1=Carbon::parse($ticket_durations[$i-1]);
+                $limit=$selected_date2->diffInDays($selected_date1);
+            }
            TicketPrice::create([
                'ticket_id'=>$ticket->id,
                'price'=>$ticket_prices[$i],
                'level'=>$ticket_levels[$i],
                'amount'=>$ticket_amounts[$i],
+               'total'=>$ticket_amounts[$i],
                'duration'=>$ticket_durations[$i],
+               'limit'=>$limit
            ]);
         }
          notify()->success('Ticket Created Successful');
@@ -124,14 +137,20 @@ class TicketController extends Controller
     }
 
     function price(){
-        $ticket=Ticket::find(5);
+        $ticket=Ticket::find(8);
         $ticket=new TicketResource($ticket);
         return $ticket;
     }
 
-    function test(){
-        $now = date('Y-m-d');
-        return  $now;
+    function test(Request $request){
+        $date=$request->date;
+        $current_date=date('Y-m-d');
+
+        $aa=Carbon::parse($date);
+    $bb=Carbon::parse($current_date);
+        return $aa->diffInDays($bb);
+//        $now = date('Y-m-d');
+//        return  $now;
     }
 
     /**
@@ -145,7 +164,7 @@ class TicketController extends Controller
         $ticket = Ticket::findOrFail($id);
         $ticket_price=TicketPrice::all();
         $cities=City::findorFail($id);
-     
+
         $airlines=Airline::orderBy('name')->get();
          return view('admin.ticket.edit-ticket')->with([
             'ticket'=>$ticket,

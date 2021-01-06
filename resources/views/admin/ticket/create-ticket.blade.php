@@ -54,7 +54,7 @@
                 @endif
 
                 <div class="card-header">
-                   
+
                     <h5>Basic Form Inputs</h5>
                     <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
 
@@ -120,7 +120,7 @@
                                     <label class="col-sm-2 col-form-label">Ticket Price</label>
                                         <div class="col-sm-10">
                                             <div class="form-group row">
-                                                <div class="col-sm-11">
+                                                <div class="col-sm-12">
                                                     <div class="row">
                                                         <div class="col-sm-3">
                                                             <input type="number" name="ticket_price[]" class="form-control" placeholder="Price">
@@ -142,14 +142,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-1">
-                                                <div x-show="index==0">
-                                                    <button type="button" class="btn btn-round btn-success" x-on:click="loop++">+</button>
-                                                </div>
-                                                <div x-show="index!=0">
-                                                    <button type="button" class="btn btn-round btn-danger" x-on:click="loop--">-</button>
-                                                </div>
-                                                </div>
+{{--                                                <div class="col-sm-1">--}}
+{{--                                                    <div x-show="index==0">--}}
+{{--                                                        <button type="button" class="btn btn-round btn-success" x-on:click="loop++">+</button>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div x-show="index!=0">--}}
+{{--                                                        <button type="button" class="btn btn-round btn-danger" x-on:click="loop--">-</button>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@
             </div>
 
         </div>
-        
+
     </div>
 </div>
 

@@ -78,4 +78,8 @@ Route::post('/api/register',[Controller::class,'register']);
 
 
 Route::get('api/price',[TicketController::class,'price']);
-Route::get('api/test',[TicketController::class,'test']);
+Route::post('api/test',[TicketController::class,'test']);
+
+Route::get('test',function(){
+    return view('test');
+});
