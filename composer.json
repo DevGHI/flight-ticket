@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.1",
         "livewire/livewire": "^2.0",
-        "mckenziearts/laravel-notify": "^2.1"
+        "mckenziearts/laravel-notify": "^2.1",
+        "netojose/laravel-api-explorer": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",

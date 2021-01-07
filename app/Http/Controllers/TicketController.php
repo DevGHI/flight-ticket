@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Resources\TicketCollection;
-use App\Http\Resources\TicketResource;
+use Throwable;
+use Carbon\Carbon;
 
 use App\Models\City;
 use App\Models\Order;
@@ -12,7 +12,8 @@ use App\Models\Ticket;
 use App\Models\Airline;
 use App\Models\TicketPrice;
 use Illuminate\Http\Request;
-use Throwable;
+use App\Http\Resources\TicketResource;
+use App\Http\Resources\TicketCollection;
 
 class TicketController extends Controller
 {
@@ -120,6 +121,17 @@ class TicketController extends Controller
             'cities'=> $cities,
             'airlines'=> $airlines
         ]);
+    }
+
+    function price(){
+        $ticket=Ticket::find(5);
+        $ticket=new TicketResource($ticket);
+        return $ticket;
+    }
+
+    function test(){
+        $now = date('Y-m-d');
+        return  $now;
     }
 
     /**

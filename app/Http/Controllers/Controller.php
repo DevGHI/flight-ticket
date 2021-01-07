@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -33,6 +34,43 @@ class Controller extends BaseController
             return [
                 'status'=>'fail',
                 'message'=>"Invalid Email or Password",
+                'data'=>[]
+            ];
+        }
+    }
+
+    function register(Request $request){
+        $name=$request->name;
+        $email=$request->email;
+        $password=$request->password;
+        $confirm_password=$request->confirm_password;
+
+        $user=User::where('email',$email)->count();
+       
+        if($password!=$confirm_password){
+            return [
+                'status'=>'fail',
+                'message'=>"Confirm Password Does not match",
+                'data'=>[]
+            ];
+        }
+        else if($user>0){
+            return [
+                'status'=>'fail',
+                'message'=>"Email Already Exist!",
+                'data'=>[]
+            ];
+        }
+        else{
+            User::create([
+                'name'=>$name,
+                'email'=>$email,
+                'password'=>Hash::make($password),
+                'user_type'=>'user'
+            ]);
+            return [
+                'status'=>'success',
+                'message'=>"Registration Success",
                 'data'=>[]
             ];
         }

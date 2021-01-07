@@ -35,7 +35,7 @@
                     </tbody>
 
                 </table>
-                {{ $data->links() }}
+                {{ $paginate->links() }}
             </div>
         </div>
     </div>

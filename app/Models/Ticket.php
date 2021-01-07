@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ticket extends Model
 {
@@ -29,7 +29,7 @@ class Ticket extends Model
 
     public function ticket_price()
     {
-        return $this->belongsTo('App\Model\TicketPrice','ticket_id');
+        return $this->hasMany('App\Models\TicketPrice','ticket_id');
     }
 
 }

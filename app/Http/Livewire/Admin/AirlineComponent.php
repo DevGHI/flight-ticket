@@ -69,7 +69,7 @@ class AirlineComponent extends Component
     {
         $obj=new AirlineController();
         $result=$obj->index();
-       // dd($result['data'][0]['photo']);
+        dd(json_encode($result['data'][0]['photo_url']));
         return view('livewire.admin.airline-component')->with([
             'data'=>$result['data'],
             'paginate'=>$result['paginate'],

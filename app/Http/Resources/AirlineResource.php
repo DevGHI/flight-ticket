@@ -17,7 +17,8 @@ class AirlineResource extends JsonResource
         return [
             'id'=>$this->id,
             'name'=>$this->name,
-            'photo'=>env('APP_URL').'storage/'.$this->logo
+            'photo'=>env('APP_URL').'storage/'.$this->logo,
+            'photo_url'=>env('APP_URL').'storage/'.$this->logo,
         ];
     }
 }

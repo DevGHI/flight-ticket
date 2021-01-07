@@ -35,7 +35,7 @@ Route::get('dashboard',function(){
     return redirect('/admin/city');
 });
 
-Route::middleware(['auth:sanctum', 'verified','admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function () {
 
     // city
     Route::get('city',function(){
@@ -74,3 +74,8 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->prefix('admin')->group(
 });
 
 Route::post('/api/login',[Controller::class,'login']);
+Route::post('/api/register',[Controller::class,'register']);
+
+
+Route::get('api/price',[TicketController::class,'price']);
+Route::get('api/test',[TicketController::class,'test']);

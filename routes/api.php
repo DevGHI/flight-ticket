@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\admin\AirlineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::get('tickets',[\App\Http\Controllers\TicketController::class,'api_tickets
 Route::apiResource('cities',\App\Http\Controllers\admin\CityController::class)->middleware('auth:sanctum');
 
 Route::post('order',[OrderController::class,'store'])->middleware('auth:sanctum');
+
+Route::get('airlines',[AirlineController::class,'index']);
