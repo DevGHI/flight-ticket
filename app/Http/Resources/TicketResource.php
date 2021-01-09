@@ -46,12 +46,14 @@ class TicketResource extends JsonResource
         else if ($now<=$ticket_price[1]['duration']){
             if ($ticket_price[1]['amount']>0){
                 self::$greatest_level=1;
-                if($this->isOKDemand($ticket_price[self::$greatest_level])){
-                    $current_price=$ticket_price[self::$greatest_level]['price'];
-                }
-                else{
-                    $current_price=$this->decreaseLevel($ticket_price,1);
-                }
+                $current_price=$ticket_price[self::$greatest_level]['price'];
+                // self::$greatest_level=1;
+                // if($this->isOKDemand($ticket_price[self::$greatest_level])){
+                //     $current_price=$ticket_price[self::$greatest_level]['price'];
+                // }
+                // else{
+                //     $current_price=$this->decreaseLevel($ticket_price,1);
+                // }
             }
             else{
                  $current_price=$this->increseLevel($ticket_price,1);
@@ -68,7 +70,8 @@ class TicketResource extends JsonResource
                 }
             }
             else{
-                $current_price=$this->decreaseLevel($ticket_price,2);
+                //stop
+                //$current_price=$this->decreaseLevel($ticket_price,2);
             }
         }
 //        $data=TicketPrice::where('ticket_id',$this->id)->where('duration','>=',$now)->get();
