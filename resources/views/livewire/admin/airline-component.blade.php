@@ -2,7 +2,7 @@
     <div class="card">
 
         <div class="card-header">
-            <h5>City Manage</h5>
+            <h5>Airline Manage</h5>
             <div style="float: right">
                 <button class="btn btn-info btn-round" data-toggle="modal" data-target="#create_modalBox">Create</button>
             </div>

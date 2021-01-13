@@ -77,6 +77,18 @@ class Controller extends BaseController
     }
 
 
+    public function logout()
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+
     // public function user_list()
     // {
     //     $users = User::orderBy('email')->get();

@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Counter;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TicketController;
@@ -70,6 +71,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function
     Route::post('order/confirm/{confirm}', [OrderController::class,'confirm'])->name('order-confirm');
     Route::get('order/destroy/{id}', [OrderController::class,'destroy'])->name('order-destroy');
 
+    Route::get('logout',[Controller::class,'logout']);
 
 });
 

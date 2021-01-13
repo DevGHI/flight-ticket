@@ -15,12 +15,12 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Advanced DataTable</h4>
-                        <span>Advanced initialisation of DataTables</span>
+                        <h4>User Table</h4>
+                        {{-- <span>Advanced initialisation of DataTables</span> --}}
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            {{-- <div class="col-lg-4">
                 <div class="page-header-breadcrumb">
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
@@ -32,7 +32,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- Page-header end -->

@@ -2,7 +2,7 @@
     <div class="pcoded-inner-navbar main-menu">
         <div class="pcoded-navigatio-lavel">Navigation</div>
         <ul class="pcoded-item pcoded-left-item">
-            <li class="pcoded-hasmenu">
+            {{-- <li class="pcoded-hasmenu">
                 <a href="javascript:void(0)">
                     <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                     <span class="pcoded-mtext">Dashboard</span>
@@ -25,7 +25,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="@if(Request::is('admin/city')) active @endif">
                 <a href="{{ route('city') }}">
                     <span class="pcoded-micon"><i class="feather icon-box"></i></span>
@@ -56,6 +56,12 @@
                     <span class="pcoded-mtext">User Profile</span>
                 </a>
             </li>
+             {{-- <li>
+                <a href="{{ url('admin/logout') }}">
+                    <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
+                    <span class="pcoded-mtext">Logout</span>
+                </a>
+            </li> --}}
         </ul>
     </div>
 </nav>
