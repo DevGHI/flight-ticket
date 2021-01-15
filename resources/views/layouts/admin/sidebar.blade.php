@@ -56,12 +56,12 @@
                     <span class="pcoded-mtext">User Profile</span>
                 </a>
             </li>
-             {{-- <li>
-                <a href="{{ url('admin/logout') }}">
+            <li>
+                <a href="{{ url('logout') }}">
                     <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
                     <span class="pcoded-mtext">Logout</span>
                 </a>
-            </li> --}}
+            </li>
         </ul>
     </div>
 </nav>

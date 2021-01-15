@@ -22,9 +22,13 @@ use App\Http\Controllers\users\DashboardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('logout',function(){
+    Auth::logout();
+    return  redirect('/login');
 });
 
 

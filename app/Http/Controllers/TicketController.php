@@ -143,14 +143,8 @@ class TicketController extends Controller
     }
 
     function test(Request $request){
-        $date=$request->date;
-        $current_date=date('Y-m-d');
+      // $aa=Ticket::find(2);
 
-        $aa=Carbon::parse($date);
-    $bb=Carbon::parse($current_date);
-        return $aa->diffInDays($bb);
-//        $now = date('Y-m-d');
-//        return  $now;
     }
 
     /**
