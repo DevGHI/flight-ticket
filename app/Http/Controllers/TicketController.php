@@ -137,7 +137,7 @@ class TicketController extends Controller
     }
 
     function price(){
-        $ticket=Ticket::find(8);
+        $ticket=Ticket::find(1);
         $ticket=new TicketResource($ticket);
         return $ticket;
     }
