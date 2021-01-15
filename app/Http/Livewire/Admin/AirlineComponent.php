@@ -41,7 +41,8 @@ class AirlineComponent extends Component
     public function updateAirline(){
         $this->validate();
         $data=[
-            'name'=>$this->name
+            'name'=>$this->name,
+            'photo'=>$this->photo
         ];
         $request=new Request($data);
         $obj=new AirlineController();
@@ -68,11 +69,11 @@ class AirlineComponent extends Component
 
     public function render()
     {
-        $result=Airline::paginate(10);
-        $data=AirlineResource::collection($result);
-        
+        $result=Airline::orderBy('id','desc')->paginate(10);
+       // $data=AirlineResource::collection($result);
+        // dd($result[0]['logo']);
         return view('livewire.admin.airline-component')->with([
-            'data'=>$data,
+            'data'=>$result,
             'paginate'=>$result,
         ]);
     }

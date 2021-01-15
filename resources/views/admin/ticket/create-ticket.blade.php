@@ -17,24 +17,12 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Advanced DataTable</h4>
-                        <span>Advanced initialisation of DataTables</span>
+                        <h4>Create Tickets</h4>
+                        <!-- <span>Advanced initialisation of DataTables</span> -->
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="page-header-breadcrumb">
-                    <ul class="breadcrumb-title">
-                        <li class="breadcrumb-item">
-                            <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="#!">Basic Initialization</a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="#!">Advance Initialization</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+           
         </div>
     </div>
     <!-- Page-header end -->
@@ -53,19 +41,9 @@
                     </div>
                 @endif
 
-                <div class="card-header">
-
-                    <h5>Basic Form Inputs</h5>
-                    <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
-
-
-                    <div class="card-header-right">
-                        <i class="icofont icofont-spinner-alt-5"></i>
-                    </div>
-
-                </div>
+               
                 <div class="card-block">
-                    <h4 class="sub-title">Basic Inputs</h4>
+                    <h4 class="sub-title">Please Fill All Data</h4>
                 <form action="{{route('tickets.store')}}" method="POST">
                     @csrf
 
@@ -114,6 +92,7 @@
                                 <input type="datetime-local" name="arrival_time" class="form-control">
                             </div>
                         </div>
+                        <hr>
                         <div x-data="{loop:3}">
                             <template x-for="(item,index) in loop" :key="item">
                                 <div class="form-group row">

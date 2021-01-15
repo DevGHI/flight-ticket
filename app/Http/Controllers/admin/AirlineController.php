@@ -73,7 +73,13 @@ class AirlineController extends Controller
      */
    public function update(Request $request, $id)
    {
-       $data=Airline::findOrFail($id)->update($request->all());
+    $filename=uniqid().'.'.$request->photo->extension();
+    $request->photo->storeAs('/public/upload/airline', $filename);
+    $arr=$request->all();
+    unset($arr['photo']);
+    $arr['logo']='upload/airline/'.$filename;
+       $data=Airline::findOrFail($id);
+       $data->update($arr);
        return [
            'status'=>"success",
            'message'=>"Successfully Updated",

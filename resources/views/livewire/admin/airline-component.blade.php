@@ -23,7 +23,7 @@
                         @foreach($data as $item)
                         <tr>
                             <td>{{json_decode(json_encode($paginate),true)['from']+$no++}}</td>
-                            <td><img src="{{$item['photo']}}" style="width: 100px;height:100px;"></td>
+                            <td><img src="{{env('APP_URL').'storage/'.$item->logo}}" style="width: 100px;height:100px;"></td>
                             <td>{{$item->name}}</td>
                             <td>
                                 <button class="btn btn-success btn-round" data-toggle="modal" data-target="#edit_modalBox" wire:click="setData({{$item->id}})">Edit</button>

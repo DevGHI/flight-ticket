@@ -16,7 +16,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $data=City::paginate(10);
+        $data=City::orderBy('id','desc')->paginate(10);
         return [
             'status'=>"success",
             'message'=>"Successful",
