@@ -24,7 +24,7 @@
                 <table id="dom-jqry" class="table table-striped table-bordered nowrap">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <!-- <th>#</th> -->
                             <th>User</th>
                              <th>Ticket</th>
                             <th>Unit_Price</th>
@@ -44,14 +44,14 @@
                             <td>{{ $order->unit_price }}</td>
                             <td>{{ $order->total_price }}</td>
                             <td>{{ $order->qty }}</td>
-                            <td>{{$order->status == false ? 'confirm':'pending' }}</td>
+                            <!-- <td>{{$order->status == false ? 'confirm':'pending' }}</td> -->
                             <td>
-                              <form action="order/confirm/{{ $order->id }}" method="POST">
+                              <!-- <form action="order/confirm/{{ $order->id }}" method="POST">
                                 @csrf
                                  <button type="submit" class="btn btn-success" >
                                   {{ $order->status == true ? 'confirm':'pending' }}
                                 </button>
-                              </form>
+                              </form> -->
                               <a  href="{{ route('order-destroy',$order->id) }}" class="btn btn-danger">Delete</a>
                             </td>
                           </tr>

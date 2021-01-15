@@ -23,8 +23,8 @@
                             <td>{{ $data->email }}</td>
                             <td>{{ $data->user_type }}</td>
                             <td>
-                                <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#edit_modalBox"
-                                wire:click="setData({{ $data->id }})">Edit</button>
+                                <!-- <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#edit_modalBox"
+                                wire:click="setData({{ $data->id }})">Edit</button> -->
                                 <button class="btn btn-danger btn-round" wire:click="deleteData({{ $data->id }})">Delete</button>
                             </td>
                         </tr>

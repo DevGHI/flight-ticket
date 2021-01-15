@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -95,6 +96,7 @@ class AdminController extends Controller
     public function destroy($id)
     {
        try{
+           Order::where('user_id',$id)->delete();
             $data = User::findOrFail($id)->delete();
             return[
                'status'=>"success",

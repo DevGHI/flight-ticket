@@ -32,7 +32,7 @@
                                 <td >{{ $user->user_type }}</td>
                                 <td>
                                    <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                   <a class="btn btn-primary btn-round" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                 
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-round">Delete</button>

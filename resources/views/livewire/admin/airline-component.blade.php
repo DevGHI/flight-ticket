@@ -27,7 +27,7 @@
                             <td>{{$item->name}}</td>
                             <td>
                                 <button class="btn btn-success btn-round" data-toggle="modal" data-target="#edit_modalBox" wire:click="setData({{$item->id}})">Edit</button>
-                                <button class="btn btn-danger btn-round" wire:click="deleteData({{$item->id}})">Delete</button>
+                                <!-- <button class="btn btn-danger btn-round" wire:click="deleteData({{$item->id}})">Delete</button> -->
                             </td>
                         </tr>
                         @endforeach
