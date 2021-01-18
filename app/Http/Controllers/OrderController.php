@@ -31,10 +31,14 @@ class OrderController extends Controller
         $arr=$request->all();
         $arr['user_id']=Auth::id();
         $data=Order::create($arr);
+        $ticket_price=TicketPrice::where('ticket_id',$request->ticket_id)->where('price',$request->unit_price)->first();
+        $ticket_price->update([
+            'amount'=>$ticket_price->amount-$request->qty
+        ]);
         return [
             'status'=>'success',
             'message'=>'Order Successful',
-            'data'=>$data
+            'data'=>$ticket_price->amount-$request->qty
         ];
     }
     public function destroy($id)

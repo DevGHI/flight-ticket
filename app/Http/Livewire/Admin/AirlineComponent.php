@@ -7,6 +7,7 @@ use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use App\Http\Resources\AirlineResource;
 use App\Http\Controllers\admin\AirlineController;
 
 class AirlineComponent extends Component
@@ -67,12 +68,12 @@ class AirlineComponent extends Component
 
     public function render()
     {
-        $obj=new AirlineController();
-        $result=$obj->index();
-        dd(json_encode($result['data'][0]['photo_url']));
+        $result=Airline::paginate(10);
+        $data=AirlineResource::collection($result);
+        
         return view('livewire.admin.airline-component')->with([
-            'data'=>$result['data'],
-            'paginate'=>$result['paginate'],
+            'data'=>$data,
+            'paginate'=>$result,
         ]);
     }
 

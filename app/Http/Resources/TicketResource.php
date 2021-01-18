@@ -24,8 +24,14 @@ class TicketResource extends JsonResource
             'airline' => $airline,
             'destination_time' => $this->destination_time,
             'arrival_time' => $this->arrival_time,
-            'price' => $this->getCurrentPrice()
+            'price' => $this->getCurrentPrice(),
+            'ticket_left'=>$this->get_ticket_left($this->id,$this->getCurrentPrice()),
         ];
+    }
+
+    private function get_ticket_left($ticket_id, $ticket_price){
+        $data=TicketPrice::where('ticket_id',$ticket_id)->where('price',$ticket_price)->first();
+        return $data->amount;
     }
 
 
