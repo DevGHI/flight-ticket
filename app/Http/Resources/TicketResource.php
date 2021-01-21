@@ -69,9 +69,11 @@ class TicketResource extends JsonResource
             if ($ticket_price[2]['amount']>0){
                 self::$greatest_level=2;
                 if($this->isOKDemand($ticket_price[self::$greatest_level])){
+                    //dd('hello');
                     $current_price=$ticket_price[self::$greatest_level]['price'];
                 }
                 else{
+                   // dd('hi');
                     $current_price=$this->decreaseLevel($ticket_price,2);
                 }
             }
@@ -116,17 +118,24 @@ class TicketResource extends JsonResource
     }
 
     private function isOKDemand($current_ticket_price){
-        $current_date=Carbon::now();
+        $current_date=date('Y-m-d');
         $expired_date=Carbon::parse($current_ticket_price['duration']);
         $remain_date=$expired_date->diffInDays($current_date);
         
+        //dd($remain_date);
         $boo=true;
         $half=$current_ticket_price['total']/2 >= $current_ticket_price['amount'];
         $time=$current_ticket_price['limit']*(2/3)>=$remain_date;
         if ($half && $time){
+           // dd('1');
+            $boo=true;
+        }
+        else if($time==false){
+            //dd('2');
             $boo=true;
         }
         else{
+           // dd($time);
             $boo=false;
         }
        // dd(self::$greatest_level);
