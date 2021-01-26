@@ -127,9 +127,9 @@ class TicketResource extends JsonResource
         //dd($remain_date);
         $boo=true;
         $half=$current_ticket_price['total']/2 >= $current_ticket_price['amount'];
-        $time=$current_ticket_price['limit']*(2/3)<$remain_date;
+        $time=$current_ticket_price['limit']*(2/3)>$remain_date;
         if ($half && $time){
-           // dd('1');
+            //dd('1');
             $boo=true;
         }
         else if($time==false){
