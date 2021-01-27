@@ -50,6 +50,7 @@ class TicketResource extends JsonResource
             }
         }
         else if ($now<=$ticket_price[1]['duration']){
+           // dd('2');
             if ($ticket_price[1]['amount']>0){
                 self::$greatest_level=1;
                 $current_price=$ticket_price[self::$greatest_level]['price'];
@@ -66,6 +67,7 @@ class TicketResource extends JsonResource
             }
         }
         else if ($now<=$ticket_price[2]['duration']){
+            //dd('3');
             if ($ticket_price[2]['amount']>0){
                 self::$greatest_level=2;
                 if($this->isOKDemand($ticket_price[self::$greatest_level])){
@@ -73,7 +75,7 @@ class TicketResource extends JsonResource
                     $current_price=$ticket_price[self::$greatest_level]['price'];
                 }
                 else{
-                   // dd('hi');
+                    //dd('hi');
                     $current_price=$this->decreaseLevel($ticket_price,2);
                 }
             }
@@ -125,7 +127,7 @@ class TicketResource extends JsonResource
         //dd($remain_date);
         $boo=true;
         $half=$current_ticket_price['total']/2 >= $current_ticket_price['amount'];
-        $time=$current_ticket_price['limit']*(2/3)>=$remain_date;
+        $time=$current_ticket_price['limit']*(2/3)<$remain_date;
         if ($half && $time){
            // dd('1');
             $boo=true;
