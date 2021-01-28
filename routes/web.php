@@ -4,6 +4,7 @@ use App\Http\Livewire\Counter;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\admin\CityController;
@@ -31,6 +32,8 @@ Route::get('logout',function(){
     return  redirect('/login');
 });
 
+//Mail 
+Route::get('/send_mail',[MailController::class,'sendMail']);
 
 Route::get('/counter',Counter::class);
 Route::get('testing',[AirlineController::class,'index']);

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Order;
+use App\Mail\OrderMail;
 use App\Models\TicketPrice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -35,6 +37,14 @@ class OrderController extends Controller
         $ticket_price->update([
             'amount'=>$ticket_price->amount-$request->qty
         ]);
+        
+        //Order Mail
+        $details=[
+            'title'=>'Dear Customer',
+            'body'=>"Thank's, your flight ticket order successfull"
+        ];
+        Mail::to(Auth::user()->id)->send(new OrderMail($details));
+
         return [
             'status'=>'success',
             'message'=>'Order Successful',
