@@ -43,7 +43,7 @@ class OrderController extends Controller
             'title'=>'Dear Customer',
             'body'=>"Thank's, your flight ticket order successfull"
         ];
-        Mail::to(Auth::user()->id)->send(new OrderMail($details));
+        Mail::to(Auth::user()->email)->send(new OrderMail($details));
 
         return [
             'status'=>'success',
